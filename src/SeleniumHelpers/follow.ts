@@ -1,116 +1,189 @@
-import { until,By } from 'selenium-webdriver';
+
+import { FollowL } from "../SeleniumLocators/FollowL.js";
 import { waitForElement } from "./htmlHelper.js";
 
 
-
-// export async function follow(driver: any, url: string): Promise<void> {
+// export async function followAndConnect(driver: any, url: string): Promise<void> {
 //     await driver.get(`${url}`);
-//     await driver.sleep(2000)
-    
-//     try {
-//         console.log("HUUUUUUJ")
-//         const connect = await waitForElement(driver,"//div[@class='pv-top-card-v2-ctas ']//button//span[text()='Connect']",10000)
-//         const follow = await waitForElement(driver,"//div[@class='pv-top-card-v2-ctas ']//button//span[text()='Follow']",10000)
-//                 // await driver.sleep(2000)
-//                 // const connect  = await driver.findElement(By.xpath("//div[@class='pv-top-card-v2-ctas ']//button//span[text()='Connect']"))
-//                 // const follow  = await driver.findElement(By.xpath("//div[@class='pv-top-card-v2-ctas ']//button//span[text()='Follow']"))
-//                 console.log("follow",follow)
-//                 console.log("follow")
-//         // const follow = await waitForElement(driver,"//div[@class='pv-top-card-v2-ctas ']//button//span[text()='Follow']",10000)
+//     await driver.sleep(2000);
 
-//         if (follow) {
-//             await follow.click();
-//             console.log(123)
-//         } else if (connect) {
-//             await connect.click();
-//             console.log(321)
-
-//             // Add custom message and send connection request
-//             const messagebutton = await waitForElement(driver, "div[class='artdeco-modal__actionbar ember-view text-align-right']>button:nth-child(1)", 10000);
-//             messagebutton.click()
-//             const messageInput = await waitForElement(driver, "div[class='relative']>textarea", 10000);
-//             if (messageInput) {
-//                 await messageInput.sendKeys("321"); // Dodaj tutaj własną niestandardową wiadomość
-//                 const sendButton = await waitForElement(driver, "div[class='artdeco-modal__actionbar ember-view text-align-right']>button:nth-child(2)", 10000);
-//                 if (sendButton) {
-//                     // await sendButton.click();
-//                 }
-//             }
-//         } else {
-//             console.log("Nie znaleziono przycisku Follow ani Connect");
-//         }
-
-//     } catch (error) {
-//         console.log("Element nie został znaleziony");
-//     }
- 
-//   }
-
-
-  //div[@class="pv-top-card-v2-ctas "]//button//span[text()="Connect"]
-
-
-
-//   export async function follow(driver: any, url: string): Promise<void> {
-//         await driver.get(`${url}`);
-//         await driver.sleep(2000)
-        
-//         try {
-//             const follow = await waitForElement(driver,"div[class='pv-top-card-v2-ctas ']>div>button",10000)
-//             await follow.click();
-//             const messagebutton = await waitForElement(driver, "div[class='artdeco-modal__actionbar ember-view text-align-right']>button:nth-child(1)", 10000);
-//             messagebutton.click()
-//             const messageInput = await waitForElement(driver, "div[class='relative']>textarea", 10000);
-
-//             await messageInput.sendKeys("321"); // Dodaj tutaj własną niestandardową wiadomość
-//             const sendButton = await waitForElement(driver, "div[class='artdeco-modal__actionbar ember-view text-align-right']>button:nth-child(2)", 10000);
-//               } 
-//         catch (error) {
-//         console.log("Follow");
-
-//          }            
-
-//         }
-
-
-
-export async function followAndConnect(driver: any, url: string): Promise<void> {
-    await driver.get(`${url}`);
-    await driver.sleep(2000);
-
-    const button = await driver.findElement(By.css("div[class='pv-top-card-v2-ctas ']>div>button"));
+//     const button = await driver.findElement(By.css("div[class='pv-top-card-v2-ctas ']>div>button"));
 
    
-    const buttonText = await button.getText();
-    console.log(buttonText)
+//     const buttonText = await button.getText();
+//     console.log(buttonText)
 
-        if (buttonText === "Follow") {
-            await button.click();
-            await driver.navigate().refresh();
+//         if (buttonText === "Follow") {
+//             await button.click();
+//             await driver.navigate().refresh();
            
-            const connect = await waitForElement(driver, "div[class='pv-top-card-v2-ctas ']>div>button", 10000);
-            await connect.click()
-            const messagebutton = await waitForElement(driver, "div[class='artdeco-modal__actionbar ember-view text-align-right']>button:nth-child(1)", 10000);
-                        messagebutton.click()
-                        const messageInput = await waitForElement(driver, "div[class='relative']>textarea", 10000);
+//             const connect = await waitForElement(driver, "div[class='pv-top-card-v2-ctas ']>div>button", 10000);
+//             await connect.click()
+//             const messagebutton = await waitForElement(driver, "div[class='artdeco-modal__actionbar ember-view text-align-right']>button:nth-child(1)", 10000);
+//                         messagebutton.click()
+//                         const messageInput = await waitForElement(driver, "div[class='relative']>textarea", 10000);
             
-                        await messageInput.sendKeys("321"); 
-                        const sendButton = await waitForElement(driver, "div[class='artdeco-modal__actionbar ember-view text-align-right']>button:nth-child(2)", 10000);
-            return;
+//                         await messageInput.sendKeys("321"); 
+//                         const sendButton = await waitForElement(driver, "div[class='artdeco-modal__actionbar ember-view text-align-right']>button:nth-child(2)", 10000);
+//             return;
 
-        } else if (buttonText === "Connect") {
-            await button.click();
-            console.log("Kliknięto przycisk Connect");
-            const messagebutton = await waitForElement(driver, "div[class='artdeco-modal__actionbar ember-view text-align-right']>button:nth-child(1)", 10000);
-                        messagebutton.click()
-                        const messageInput = await waitForElement(driver, "div[class='relative']>textarea", 10000);
+//         } else if (buttonText === "Connect") {
+//             await button.click();
+//             console.log("Kliknięto przycisk Connect");
+//             const messagebutton = await waitForElement(driver, "div[class='artdeco-modal__actionbar ember-view text-align-right']>button:nth-child(1)", 10000);
+//                         messagebutton.click()
+//                         const messageInput = await waitForElement(driver, "div[class='relative']>textarea", 10000);
             
-                        await messageInput.sendKeys("321"); 
-                        const sendButton = await waitForElement(driver, "div[class='artdeco-modal__actionbar ember-view text-align-right']>button:nth-child(2)", 10000);
-            return; // Zakończ funkcję po kliknięciu "Connect"
-        }
+//                         await messageInput.sendKeys("321"); 
+//                         const sendButton = await waitForElement(driver, "div[class='artdeco-modal__actionbar ember-view text-align-right']>button:nth-child(2)", 10000);
+//             return; // Zakończ funkcję po kliknięciu "Connect"
+//         }
         
-    console.log("Nie znaleziono przycisku Follow ani Connect");
-    }
+//     console.log("Nie znaleziono przycisku Follow ani Connect");
+//     }
 
  
+
+
+// export async function followAndConnect(driver: any, url: string): Promise<void> {
+//     await driver.get(`${url}`);
+//     await driver.sleep(2000);
+
+//     try {
+//         const button = await driver.findElement(By.css("div[class='pv-top-card-v2-ctas ']>div>button"));
+//         const buttonText = await button.getText();
+//         console.log(buttonText);
+
+//         if (buttonText === "Follow") {
+//             await button.click();
+//             await driver.navigate().refresh();
+           
+//             const connect = await waitForElement(driver, "div[class='pv-top-card-v2-ctas ']>div>button", 2000);
+//             await connect.click();
+
+//             const messagebutton = await waitForElement(driver, "div[class='artdeco-modal__actionbar ember-view text-align-right']>button:nth-child(1)", 10000);
+//             messagebutton.click();
+
+//             const messageInput = await waitForElement(driver, "div[class='relative']>textarea", 2000);
+//             await messageInput.sendKeys("321");
+
+//             const sendButton = await waitForElement(driver, "div[class='artdeco-modal__actionbar ember-view text-align-right']>button:nth-child(2)", 10000);
+//             await driver.navigate().refresh();
+//             return;
+
+//         } else if (buttonText === "Connect") {
+//             await button.click();
+//             console.log("Kliknięto przycisk Connect");
+
+//             const messagebutton = await waitForElement(driver, "div[class='artdeco-modal__actionbar ember-view text-align-right']>button:nth-child(1)", 10000);
+//             messagebutton.click();
+
+//             const messageInput = await waitForElement(driver, "div[class='relative']>textarea", 2000);
+//             await messageInput.sendKeys("321");
+
+//             const sendButton = await waitForElement(driver, "div[class='artdeco-modal__actionbar ember-view text-align-right']>button:nth-child(2)", 10000);
+//             await driver.navigate().refresh();
+//             return; 
+//         }
+        
+//         console.log("Nie znaleziono przycisku Follow ani Connect");
+//     } catch (error) {
+//         if (error.name === "NoSuchElementError") {
+//             console.log("Nie znaleziono elementu:", error.message);
+//         } else {
+//             console.log("Wystąpił błąd podczas szukania elementu:", error);
+//         }
+        
+//     }
+// }
+
+// export async function Connect(driver: any, url: string): Promise<void> {
+//         await driver.get(`${url}`);
+//         await driver.sleep(2000);
+    
+//         try {
+//             const button = await waitForElement(driver,"div[class='pv-top-card-v2-ctas ']>div>button",2000);
+//             const buttonText = await button.getText();
+//             if (buttonText === "Connect")
+//             {
+//               await button.click()
+//               const messagebutton = await waitForElement(driver, "div[class='artdeco-modal__actionbar ember-view text-align-right']>button:nth-child(1)", 10000);
+//             messagebutton.click();
+
+//             const messageInput = await waitForElement(driver, "div[class='relative']>textarea", 2000);
+//             await messageInput.sendKeys("321");
+
+//              const sendButton = await waitForElement(driver, "div[class='artdeco-modal__actionbar ember-view text-align-right']>button:nth-child(2)", 10000);
+//               await driver.navigate().refresh();
+//               return;
+//             }
+//             else
+//            {
+//             const dropdown = await waitForElement(driver,"div[class='pv-top-card-v2-ctas ']>div>div>button[aria-label='More actions']",2000);
+//             await dropdown.click()
+//             const connect = await waitForElement(driver,"(//div[@class='artdeco-dropdown__content-inner']//span[text()='Connect'])[2]",2000)
+//             // await connect.click()
+//             await driver.navigate().refresh();
+            
+//            }
+            
+//         } catch (error) {
+//             console.log('Nie znaleziono przycisku "Connect". Szukanie w innej lokalizacji...');
+            
+//         }
+//     }
+
+
+    // export async function Follow(driver: any, url: string): Promise<void> {
+    //     await driver.get(`${url}`);
+    //     await driver.sleep(2000);
+    
+    //     try {
+    //         const button = await waitForElement(driver,"div[class='pv-top-card-v2-ctas ']>div>button",2000);
+    //         const buttonText = await button.getText();
+    //         if (buttonText === "Follow")
+    //         {
+    //         //   await button.click()
+    //           await driver.navigate().refresh();
+    //           return;
+    //         }
+    //         else
+    //        {
+    //         const dropdown = await waitForElement(driver,"div[class='pv-top-card-v2-ctas ']>div>div>button[aria-label='More actions']",2000);
+    //         await dropdown.click()
+    //         const follow = await waitForElement(driver,"(//div[@class='artdeco-dropdown__content-inner']//span[text()='Follow'])[2]",2000)
+    //         // await follow.click()
+    //         await driver.navigate().refresh();
+    //     }
+            
+    //     } catch (error) {
+    //         console.log("didnt find follow button")
+            
+    //     }
+    // }
+
+
+    export async function Follow(driver: any, url: string): Promise<void> {
+        await driver.get(`${url}`);
+    
+        try {
+            const button = await waitForElement(driver, FollowL.button, 2000);
+            const buttonText = await button.getText();
+            if (buttonText === "Follow") {
+                // await button.click();
+                await driver.navigate().refresh();
+                return;
+            } else {
+                const dropdown = await waitForElement(driver, FollowL.dropdown, 2000);
+                await dropdown.click();
+                const follow = await waitForElement(driver, FollowL.follow, 2000);
+                // await follow.click();
+                await driver.navigate().refresh();
+            }
+    
+        } catch (error) {
+            console.log("Cannot find 'follow' button");
+        }
+    }
+
+

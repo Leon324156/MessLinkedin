@@ -1,19 +1,24 @@
 import { waitForElement } from './htmlHelper.js';
-export async function sendMessage(driver, url, message) {
+import { sm } from '../SeleniumLocators/messL.js';
+export async function sendMessage(driver, url, messagetit, message) {
     try {
         await driver.get(`${url}`);
-        const mess = waitForElement(driver, "div[class='entry-point pvs-profile-actions__action']", 10000);
-        await (await mess).click();
-        const title = waitForElement(driver, "input[class=' artdeco-text-input--input']", 10000);
-        await (await title).click();
-        await (await title).sendKeys("test");
-        const messcontent = waitForElement(driver, ".msg-form__contenteditable", 10000);
-        await (await messcontent).click();
-        await (await messcontent).sendKeys(message);
-        // await driver.findElement(By.css('.msg-form__send-button')).click();
+        const icon = await waitForElement(driver, sm.icon, 2000);
+        const lockicon = await icon.getAttribute('type');
+        console.log(lockicon);
+        if (lockicon !== 'locked') {
+            const mess = await waitForElement(driver, sm.mess, 2000);
+            await mess.click();
+            const title = await waitForElement(driver, sm.title, 2000);
+            await title.click();
+            await title.sendKeys(messagetit);
+            const messcontent = await waitForElement(driver, sm.messcontent, 2000);
+            await messcontent.click();
+            await messcontent.sendKeys(message);
+        }
     }
     catch (error) {
-        console.log("error in send mess");
+        console.log(error);
     }
 }
 //# sourceMappingURL=mess.js.map

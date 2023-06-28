@@ -1,4 +1,4 @@
-import {  By, Key,WebDriver,WebElement,until } from 'selenium-webdriver';
+import {  By,WebDriver,WebElement,until } from 'selenium-webdriver';
 
 export async function waitForElement(driver: any, selector: string, timeout: number): Promise<WebElement> {
     const locator = By.css(selector); 
@@ -16,9 +16,6 @@ export async function waitForElement(driver: any, selector: string, timeout: num
       return element;
     }
   }
-
-
-
 
 export async function scrollToElement(driver: WebDriver, element: WebElement): Promise<void> {
   await driver.executeScript('arguments[0].scrollIntoView(true);', element);

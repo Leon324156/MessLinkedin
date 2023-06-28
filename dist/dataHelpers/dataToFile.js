@@ -1,10 +1,9 @@
-import fs from 'fs'; // Dodaj import modułu fs
+import fs from 'fs';
 import { Apollo } from "./getlist.js";
-export async function mailsToFile() {
-    const apollo = new Apollo('I8ST-FAblnmxQRfuYrqGWw'); // Zastąp 'twój_api_key' własnym kluczem API
+export async function mailsToFile(Key) {
+    const apollo = new Apollo(Key);
     try {
-        const emaile = await apollo.getEmails(); // Pobierz listę maili
-        // Zapisz maile do pliku txt
+        const emaile = await apollo.getEmails();
         fs.writeFileSync('maile.txt', emaile.join('\n'));
         console.log('Maile zapisane do pliku maile.txt');
     }
@@ -12,11 +11,10 @@ export async function mailsToFile() {
         console.error('Wystąpił błąd:', error);
     }
 }
-export async function linkedinToFile() {
-    const apollo = new Apollo('I8ST-FAblnmxQRfuYrqGWw'); // Zastąp 'twój_api_key' własnym kluczem API
+export async function linkedinToFile(Key) {
+    const apollo = new Apollo(Key);
     try {
-        const linkedinUrls = await apollo.getLinkedInUrls(); // Pobierz listę URLi LinkedIn
-        // Zapisz URLi do pliku txt
+        const linkedinUrls = await apollo.getLinkedInUrls();
         fs.writeFileSync('linkedin.txt', linkedinUrls.join('\n'));
         console.log('URLi LinkedIn zapisane do pliku linkedin.txt');
     }
