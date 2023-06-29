@@ -1,11 +1,11 @@
-# Zignoruj katalog zależności
+
 /node_modules
 
-# Zignoruj pliki kompilacji TypeScript
+
 /dist
 /*.tsbuildinfo
 
-# Zignoruj cache edytorów
+
 .vscode
 .idea
 *.sw*
