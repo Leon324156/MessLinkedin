@@ -28,17 +28,6 @@ mailsToFile(AppoloApi)
 linkedinToFile(AppoloApi)
 
 
-// await followAndConnect(driver,"https://www.linkedin.com/in/robinknox//")
-// await postliker(driver)
-// await sendMessage(driver, "https://www.linkedin.com/in/kacper-w/", "testujemy");
-// await sendMessage(driver, "https://www.linkedin.com/in/robinknox/", "testujemy");
-// await Follow(driver,"https://www.linkedin.com/in/natalia-k-ba989ba4/")
-// await Connect(driver,"https://www.linkedin.com/in/natalia-k-ba989ba4/")
-
-
-// // await driver.quit();
-
-
 
 
 
