@@ -15,6 +15,8 @@ export async function sendMessage(driver, url, messagetit, message) {
             const messcontent = await waitForElement(driver, sm.messcontent, 2000);
             await messcontent.click();
             await messcontent.sendKeys(message);
+            // const send = await waitForElement(driver,sm.send,1000)
+            // await send.click()
         }
     }
     catch (error) {
