@@ -47,7 +47,7 @@ export class Apollo {
     async GetLastask(): Promise<Task> {
         const payload = {
             api_key: this.apiKey,
-            priority: ["medium"],
+            priority: ["high"],
             per_page: 190,
             open_factor_names: [
                 "task_types"
@@ -57,7 +57,7 @@ export class Apollo {
             'Content-Type': 'application/json'
         };
         const response: AxiosResponse<ResponseData> = await axios.post(this.taskSearchUrl, payload, { headers });
-        const priorities = response.data.tasks.filter(task => task.priority === "medium")[0];
+        const priorities = response.data.tasks.filter(task => task.priority === "high")[0];
         return priorities;
     }
     async TaskCompleted(taskid:string): Promise<void> {
