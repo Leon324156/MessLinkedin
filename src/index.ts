@@ -42,10 +42,10 @@ const message = await getmess()
 
 await driver.manage().window().maximize();
 await loadCookiesAndVisitPage(driver);
-await sendMessage(driver,"https://www.linkedin.com/in/tomi-kamson-32520318b/",message)
-await driver.quit();
+await sendMessage(driver,lastTask.contact.linkedin_url,message)
+// await driver.quit();
 console.log(lastTask.id)
-// await apollo.TaskCompleted(lastTask.id);
+await apollo.TaskCompleted(lastTask.id);
 // }
 
 

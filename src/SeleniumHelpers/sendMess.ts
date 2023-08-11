@@ -23,7 +23,7 @@ export async function sendMessage(driver: WebDriver,url:string,message: string) 
             }
             const messcontent = await waitForElement(driver, sm.messcontent, 2000);
             await messcontent.click();
-            await messcontent.sendKeys(message);
+            await messcontent.sendKeys(message, Key.ENTER);
             await driver.sleep(3000)
         }
     } catch (error) {
