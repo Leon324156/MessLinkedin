@@ -2,7 +2,7 @@ import { Builder } from 'selenium-webdriver';
 import dotenv from 'dotenv';
 import { loadCookiesAndVisitPage } from './SeleniumHelpers/CookiesHelper.js';
 import { Apollo } from './dataHelpers/getlist.js';
-import { getmess, sendMessage } from './SeleniumHelpers/sendMess.js';
+import { composeInviteMessage, getmess } from './SeleniumHelpers/sendMess.js';
 // export const handler = async (event: ScheduledEvent, context: Context): Promise<void> => {
 //     console.log('Received event:', JSON.stringify(event, null, 2));
 dotenv.config();
@@ -29,12 +29,12 @@ let driver = await new Builder().forBrowser('chrome').build();
 //     .setChromeOptions(options)
 //     .setChromeService(serviceBuilder)
 //     .build();
-const message = await getmess();
+const message = await getmess(lastTask.contact.first_name, lastTask.contact.organization_name);
 await driver.manage().window().maximize();
 await loadCookiesAndVisitPage(driver);
-await sendMessage(driver, lastTask.contact.linkedin_url, message);
+await composeInviteMessage(driver, "https://www.linkedin.com/in/ruiinacio1/", message);
 // await driver.quit();
 console.log(lastTask.id);
-await apollo.TaskCompleted(lastTask.id);
+// await apollo.TaskCompleted(lastTask.id);
 // }
 //# sourceMappingURL=index.js.map
