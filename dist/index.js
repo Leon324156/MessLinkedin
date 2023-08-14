@@ -33,8 +33,8 @@ const message = await getmess(lastTask.contact.first_name, lastTask.contact.orga
 await driver.manage().window().maximize();
 await loadCookiesAndVisitPage(driver);
 await composeInviteMessage(driver, lastTask.contact.linkedin_url, message);
-// await driver.quit();
+await driver.quit();
 console.log(lastTask.id);
-// await apollo.TaskCompleted(lastTask.id);
+await apollo.TaskCompleted(lastTask.id);
 // }
 //# sourceMappingURL=index.js.map
