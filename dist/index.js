@@ -32,7 +32,7 @@ let driver = await new Builder().forBrowser('chrome').build();
 const message = await getmess(lastTask.contact.first_name, lastTask.contact.organization_name);
 await driver.manage().window().maximize();
 await loadCookiesAndVisitPage(driver);
-await composeInviteMessage(driver, "https://www.linkedin.com/in/ruiinacio1/", message);
+await composeInviteMessage(driver, lastTask.contact.linkedin_url, message);
 // await driver.quit();
 console.log(lastTask.id);
 // await apollo.TaskCompleted(lastTask.id);

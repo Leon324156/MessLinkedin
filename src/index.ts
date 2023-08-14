@@ -42,10 +42,10 @@ const message = await getmess(lastTask.contact.first_name,lastTask.contact.organ
 
 await driver.manage().window().maximize();
 await loadCookiesAndVisitPage(driver);
-await composeInviteMessage(driver,"https://www.linkedin.com/in/ruiinacio1/",message)
-// await driver.quit();
+await composeInviteMessage(driver,lastTask.contact.linkedin_url,message)
+await driver.quit();
 console.log(lastTask.id)
-// await apollo.TaskCompleted(lastTask.id);
+await apollo.TaskCompleted(lastTask.id);
 // }
 
 
